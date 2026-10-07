@@ -16,7 +16,7 @@ const Sidebar = () => {
     return (
         <aside
             className={`
-                fixed top-0 left-0 h-full bg-white text-black shadow-md flex flex-col pt-24 z-30 transition-all duration-200 dark:bg-[#27272a]  
+                fixed top-0 left-0 h-full bg-white shrink-0 text-black shadow-md flex flex-col pt-24 z-30 transition-all duration-200 dark:bg-[#27272a]  
                 
             `}
             style={{

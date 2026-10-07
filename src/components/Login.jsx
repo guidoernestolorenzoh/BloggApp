@@ -1,8 +1,10 @@
 import { Card, Button, Separator, Spinner } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import Logo from "./../assets/logo.png";
+import LogoDark from "./../assets/logo_oscuro.png";
 import { useState } from "react";
 import { Person, Key, Envelope } from "@gravity-ui/icons";
+import { useTheme } from "../store/useThemeStore";
 
 const Login = () => {
   const [haveAccount, setHaveAccount] = useState(false);
@@ -10,6 +12,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+
+  const {theme, toggleDarkMode} = useTheme();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,13 +31,13 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#faf7f4]">
+    <div className="flex min-h-screen items-center justify-center bg-[#faf7f4] dark:bg-zinc-900">
       <Card
         variant="transparent"
         className="relative flex w-full max-w-md bg-transparent shadow-none"
       >
         <img
-          src={Logo}
+          src={theme === 'light' ? Logo : LogoDark}
           className="my-4 mx-auto"
           alt="Logo"
           height={150}
@@ -41,7 +45,7 @@ const Login = () => {
         />
 
         <Card.Header className="flex gap-y-1 mb-2">
-          <Card.Title className="text-2xl text-gray-600 font-semibold">
+          <Card.Title className="text-2xl text-gray-600 font-semibold dark:text-gray-200">
             {haveAccount ? "Log In to your account" : "Sign Up for an account"}
           </Card.Title>
         </Card.Header>
@@ -49,7 +53,7 @@ const Login = () => {
           {/* name */}
           {!haveAccount && (
             <label className="flex flex-col gap-2 text-sm font-medium text-gray-600">
-              <div className="flex gap-1">
+              <div className="flex gap-1 dark:text-gray-200">
                 Name
                 <span className="text-red-500">*</span>
               </div>
@@ -61,14 +65,15 @@ const Login = () => {
                   onChange={(e) => setName(e.target.value)}
                   required
                   placeholder="Your name"
-                  className="w-full transition-all rounded-full border border-transparent bg-white py-3.5 pl-11 pr-4 text-sm text-gray-700 shadow-[0_2px_8px_rgba(0,0,0,0.06)] outline-none placeholder:text-gray-400 focus:border-gray-200 focus:ring-0"
+                  className={`w-full rounded-full py-3.5 pl-11 pr-4 text-sm outline-none placeholder:text-gray-400 focus:ring-0
+                    ${theme === "light" ? "bg-white border border-gray-200 text-gray-700" : "bg-zinc-900 border border-zinc-700 text-gray-100"}`}                  
                 />
               </div>
             </label>
           )}
           {/* Email */}
           <label className="flex flex-col gap-2 text-sm font-medium text-gray-600">
-            <div className="flex gap-1">
+            <div className="flex gap-1 dark:text-gray-200">
               Email
               <span className="text-red-500">*</span>
             </div>
@@ -80,13 +85,14 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="Your email"
-                className="w-full rounded-full border border-transparent bg-white py-3.5 pl-11 pr-4 text-sm text-gray-700 shadow-[0_2px_8px_rgba(0,0,0,0.06)] outline-none placeholder:text-gray-400 focus:border-gray-200 focus:ring-0"
+                className={`w-full rounded-full py-3.5 pl-11 pr-4 text-sm outline-none placeholder:text-gray-400 focus:ring-0
+                  ${theme === "light" ? "bg-white border border-gray-200 text-gray-700" : "bg-zinc-900 border border-zinc-700 text-gray-100"}`}
               />
             </div>
           </label>
           {/* Password */}
           <label className="flex flex-col gap-2 text-sm font-medium text-gray-600">
-            <div className="flex gap-1">
+            <div className="flex gap-1 dark:text-gray-200">
               Password
               <span className="text-red-500">*</span>
             </div>
@@ -98,7 +104,8 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="Password"
-                className="w-full rounded-full border border-transparent bg-white py-3.5 pl-11 pr-4 text-sm text-gray-700 shadow-[0_2px_8px_rgba(0,0,0,0.06)] outline-none placeholder:text-gray-400 focus:border-gray-200 focus:ring-0"
+                className={`w-full rounded-full py-3.5 pl-11 pr-4 text-sm outline-none placeholder:text-gray-400 focus:ring-0
+                  ${theme === "light" ? "bg-white border border-gray-200 text-gray-700" : "bg-zinc-900 border border-zinc-700 text-gray-100"}`}
               />
             </div>
           </label>

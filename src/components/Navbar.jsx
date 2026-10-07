@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import { NAVBARITEMS } from "../utils";
 import Search from "./Search";
 import Profile from "./Profile";
+import { useTheme } from "../store/useThemeStore";
 
 const languages = [
   { id: "es", label: "ES" },
@@ -38,29 +39,14 @@ const ACTIVE_COLOR = "after:content-[''] after:block after:h-0.5 after:bg-blue-4
 const Navbar = () => {
   const [language, setLanguage] = useState("es");
   //const [search, setSearch] = useState("");
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
+  
+
+  const {theme, toggleDarkMode} = useTheme();
   const [active, setActive] = useState(null);
 
-  const user = {name: "Peter Crow", email: "user@gmail.com", imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=3"}
+  const user = {name: "Peter Crow", email: "user@gmail.com", imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=9", isAdmin: true}
   
   //const user = null;
-
-  const toggleDarkMode = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
-
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-
-    document.body.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
 
   return (
     <nav
@@ -112,6 +98,7 @@ const Navbar = () => {
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
               } ${isActive ? ACTIVE_COLOR : "text-foreground"}`}
               onClick={()=> setActive(index)}
+              to={item.path}
             >
               {item.label}
             </Link>)

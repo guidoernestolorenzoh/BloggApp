@@ -1,6 +1,15 @@
 import { useState } from "react";
 import Search from "./Search";
-import { Avatar, Description, Label, Separator } from "@heroui/react";
+import { useTheme } from "../store/useThemeStore";
+import {
+  Avatar,
+  Description,
+  Label,
+  Separator,
+  Button,
+  Tooltip,
+  Chip,
+} from "@heroui/react";
 import { CirclePlus } from "@gravity-ui/icons";
 
 const followers = [
@@ -13,24 +22,24 @@ const followers = [
   },
   {
     id: "2",
-    name: "Fred Freeman",
-    email: "fred@heroui.com",
+    name: "Kate Freeman",
+    email: "kate@heroui.com",
     description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=3",
+    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=4",
   },
   {
     id: "3",
     name: "Martha Sanchez",
     email: "martha@heroui.com",
     description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=3",
+    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=5",
   },
   {
     id: "4",
     name: "Pedro Martinez",
     email: "pedro@heroui.com",
     description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=3",
+    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=6",
   },
 ];
 
@@ -64,11 +73,12 @@ const uploadedBlogs = [
 ];
 
 const RightBar = () => {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
+  // const [theme, setTheme] = useState(() => {
+  //   return localStorage.getItem("theme") || "light";
+  // });
+  const {theme} = useTheme();
   return (
-    <aside className="h-full w-96 bg-white text-black shadow-md flex flex-col px-6 pt-6 z-30 dark:bg-[#121212] border-l border-gray-100 overflow-y-auto dark:border-gray-800">
+    <aside className="h-full w-96 bg-white shrink-0 text-black shadow-md flex flex-col px-6 pt-6 z-30 dark:bg-[#121212] border-l border-gray-100 overflow-y-auto dark:border-gray-800">
       <div className="flex flex-col">
         {/* search */}
         <Search
@@ -95,7 +105,7 @@ const RightBar = () => {
               <div className="flex gap-4 items-center">
                 <Avatar size="sm">
                   <Avatar.Image alt={f.name} src={f.img} />
-                  <Avatar.Fallback>B</Avatar.Fallback>
+                  <Avatar.Fallback>{f.name.charAt(0)}</Avatar.Fallback>
                 </Avatar>
                 <div className="flex flex-col min-w-44 max-w-44">
                   <Label>{f.name}</Label>
@@ -104,12 +114,19 @@ const RightBar = () => {
                   </Description>
                 </div>
 
-                <button
-                  type="button"
-                  className="text-gray-800 cursor-pointer dark:text-gray-200"
-                >
-                  <CirclePlus height={24} width={24} />
-                </button>
+                <Tooltip delay={0}>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    className="text-gray-800 cursor-pointer dark:text-gray-200"
+                  >
+                    <CirclePlus className="size-6" />
+                  </Button>
+                  <Tooltip.Content showArrow>
+                  <Tooltip.Arrow />
+                    <p className="m-1">Follow</p>
+                  </Tooltip.Content>
+                </Tooltip>
               </div>
             </li>
           ))}
@@ -152,6 +169,33 @@ const RightBar = () => {
             </li>
           ))}
         </ul>
+        {/* see more */}
+        <div className="mx-2 mt-2 mb-5">
+          <a className="w-full cursor-pointer text-sm text-green-500 dark:text-green-300">
+            See more people...
+          </a>
+        </div>
+
+        <Separator />
+
+        {/* recommended topics */}
+        <div className="mx-2 mt-6 mb-2">
+          <p className="font-semibold w-full text-lg text-gray-700 dark:text-white">
+            Recomended topics
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3 mb-10">
+        <Chip variant="primary" size="lg" className="cursor-pointer">          
+          <Chip.Label>Predicas</Chip.Label>
+        </Chip>
+        <Chip variant="primary" size="lg" className="cursor-pointer">          
+          <Chip.Label>Enseñanzas</Chip.Label>
+        </Chip>
+        <Chip variant="primary" size="lg" className="cursor-pointer">          
+          <Chip.Label>ABC de la vida cristiana</Chip.Label>
+        </Chip>
+        </div>
       </div>
     </aside>
   );
