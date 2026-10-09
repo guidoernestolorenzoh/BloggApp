@@ -1,48 +1,13 @@
 import {
   Avatar,
   Description,
-  Label,
-  Button,
-  Tooltip,
-  Separator,
-  ScrollShadow,
+  Label
 } from "@heroui/react";
 import { Persons, PencilToLine, HeartFill } from "@gravity-ui/icons";
+import { followers } from "../../utils";
+import Follow from "../../components/Follow";
 
-const followers = [
-  {
-    id: "1",
-    name: "Bob Dylan",
-    email: "bob@heroui.com",
-    cargo: "Maestro de Educación Cristiana",
-    description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=3",
-  },
-  {
-    id: "2",
-    name: "Kate Freeman",
-    email: "kate@heroui.com",
-    cargo: "Escritor y profesional",
-    description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=4",
-  },
-  {
-    id: "3",
-    name: "Martha Sanchez",
-    email: "martha@heroui.com",
-    cargo: "Director de Alabanzas",
-    description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=5",
-  },
-  {
-    id: "4",
-    name: "Pedro Martinez",
-    email: "pedro@heroui.com",
-    cargo: "Maestro de niños",
-    description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=8",
-  }
-];
+
 
 const Authors = () => {
   return (
@@ -68,15 +33,7 @@ const Authors = () => {
                       {f.name.charAt(0)}
                     </Avatar.Fallback>
                   </Avatar>
-                  <Tooltip delay={0}>
-                    <Button className="px-8 py-5 bg-zinc-100 text-accent border border-blue-500 dark:bg-accent/10 dark:text-blue-400">
-                      <span className="text-lg font-light">Follow</span>
-                    </Button>
-                    <Tooltip.Content showArrow placement="bottom">
-                      <Tooltip.Arrow />
-                      <p className="m-1">Follow</p>
-                    </Tooltip.Content>
-                  </Tooltip>
+                  <Follow/>
                 </div>
                 <div className="flex flex-col">
                   <Label className="text-3xl w-64 overflow-hidden text-ellipsis whitespace-nowrap">
