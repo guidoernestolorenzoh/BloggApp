@@ -40,7 +40,7 @@ const ContactUs = () => {
                   onChange={(e) => setName(e.target.value)}
                   required
                   placeholder="Your name"
-                  className="w-full transition-all rounded-full border bg-white py-3.5 px-4 text-sm text-gray-700 dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-gray-200 dark:outline-0"
+                  className="inputs-rounded"
                 />
               </div>
             </label>
@@ -58,7 +58,7 @@ const ContactUs = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="Your email"
-                  className="w-full rounded-full border bg-white py-3.5 px-4 text-sm text-gray-700 placeholder:text-gray-400 dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-gray-200 dark:outline-0"
+                  className="inputs-rounded"
                 />
               </div>
             </label>
@@ -77,7 +77,7 @@ const ContactUs = () => {
                   onChange={(e) => setMessage(e.target.value)}
                   required
                   placeholder="Your message"
-                  className="w-full rounded-2xl border bg-white py-3.5 px-4 text-sm text-gray-700 placeholder:text-gray-400 dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-gray-200 dark:outline-0"
+                  className="text-area-rounded"
                 />
               </div>
             </label>

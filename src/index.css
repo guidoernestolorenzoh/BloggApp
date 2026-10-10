@@ -14,3 +14,11 @@
         font-family: var(--font-display);
     }
 }
+
+.inputs-rounded {
+    @apply w-full transition-all rounded-full border outline-0 border-gray-200 bg-white py-3.5 px-4 text-sm text-gray-700 dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-gray-200 dark:outline-0
+}
+
+.text-area-rounded {
+    @apply w-full rounded-2xl border outline-0 bg-white py-3.5 px-4 text-sm text-gray-700 placeholder:text-gray-400 dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-gray-200 dark:outline-0
+}

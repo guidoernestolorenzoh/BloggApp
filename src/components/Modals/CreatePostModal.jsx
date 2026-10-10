@@ -15,7 +15,7 @@ import TagInput from "./Inputs/TagInput";
 const CreatePostModal = ({ className, nameButton, icon, headerTitle }) => {
   const fileInputRef = useRef(null);
   const [post, setPost] = useState("");
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const [isDragOver, setIsDragOver] = useState(false);
   const [images, setImages] = useState([]);
   const [postData, setPostData] = useState({
@@ -114,7 +114,7 @@ const CreatePostModal = ({ className, nameButton, icon, headerTitle }) => {
                     <Label>
                       Title <span className="text-red-500">*</span>
                     </Label>
-                    <Input className="w-full transition-all rounded-full border border-gray-200 bg-white py-3.5 px-4 text-sm text-gray-700 dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-gray-200 dark:outline-0"
+                    <Input className="inputs-rounded"
                         placeholder="Enter a title for the post" />
                   </TextField>
                   <TextField>
@@ -164,7 +164,7 @@ const CreatePostModal = ({ className, nameButton, icon, headerTitle }) => {
                     </Label>
                     <InputGroup>
                       <InputGroup.TextArea
-                        className="w-full rounded-2xl border bg-white py-3.5 px-4 text-sm text-gray-700 placeholder:text-gray-400 dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-gray-200 dark:outline-0"
+                        className="text-area-rounded"
                         placeholder="Enter the content for the post"
                         rows={4}
                         value={post}

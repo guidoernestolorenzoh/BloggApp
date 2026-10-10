@@ -1,4 +1,4 @@
-import { EmptyState, Tag, TagGroup } from "@heroui/react";
+import { EmptyState, Input, Label, Tag, TagGroup, TextField } from "@heroui/react";
 import { useState } from "react";
 
 const TagInput = ({ tags, setTags }) => {
@@ -8,7 +8,7 @@ const TagInput = ({ tags, setTags }) => {
     if ((e.key === "Enter" || e.key === ",") && input.trim()) {
       e.preventDefault();
       const newTag = input.trim();
-      
+
       if (!tags.some((t) => t.name === newTag)) {
         setTags([...tags, { id: crypto.randomUUID(), name: newTag }]);
       }
@@ -31,21 +31,31 @@ const TagInput = ({ tags, setTags }) => {
           )}
         >
           {(tag) => (
-            <Tag id={tag.id} textValue={tag.name} >
+            <Tag id={tag.id} textValue={tag.name}>
               {tag.name}
             </Tag>
           )}
-        </TagGroup.List>        
+        </TagGroup.List>
       </TagGroup>
 
-      <input
+      <TextField
+        className="w-full"
+        name="tag"
         type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="Escriba y presione Enter o coma"
-        className="w-full transition-all rounded-full border border-gray-200 bg-white py-3.5 px-4 text-sm text-gray-700 dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-gray-200 dark:outline-0"
-      />
+        variant="secondary"
+      >
+        <Label>
+          Tags
+        </Label>
+        <Input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="inputs-rounded"
+          placeholder="Enter a title for the post"
+          onKeyDown={handleKeyDown}
+        />
+      </TextField>
+      <TextField></TextField>
     </div>
   );
 };

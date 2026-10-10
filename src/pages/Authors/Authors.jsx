@@ -33,7 +33,8 @@ const Authors = () => {
                       {f.name.charAt(0)}
                     </Avatar.Fallback>
                   </Avatar>
-                  <Follow/>
+                  {/* Follow Button */}
+                  <Follow className="px-3 py-5 bg-zinc-100 text-accent border border-blue-500 dark:bg-accent/10 dark:text-blue-400"/>
                 </div>
                 <div className="flex flex-col">
                   <Label className="text-3xl w-64 overflow-hidden text-ellipsis whitespace-nowrap">
