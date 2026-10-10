@@ -1,8 +1,13 @@
 
 
+
 const Post = () => {
   return (
-    <div>Post</div>
+  <div>
+    Post
+  </div>    
+      
+    
   )
 }
 

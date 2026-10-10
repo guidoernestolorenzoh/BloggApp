@@ -26,7 +26,7 @@ const ContactUs = () => {
         <Separator className="my-10" />
 
         <div className="flex">
-          <form className="space-y-7 w-1/2">
+          <form className="space-y-7 w-1/2" onSubmit={(e) => e.preventDefault()}>
             {/* name */}
             <label className="flex flex-col gap-2 text-sm font-medium text-gray-600">
               <div className="flex gap-1">

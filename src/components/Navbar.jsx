@@ -20,6 +20,7 @@ import { NAVBARITEMS } from "../utils";
 import Search from "./Search";
 import Profile from "./Profile";
 import { useTheme } from "../store/useThemeStore";
+import CreatePostModal from "./Modals/CreatePostModal";
 
 const languages = [
   { id: "es", label: "ES" },
@@ -203,14 +204,11 @@ const Navbar = () => {
           <Profile theme={theme} user={user} className="cursor-pointer"/>
 
           {/* write */}
-          <div
-            className={`px-3 py-0.5 text-lg cursor-pointer rounded-lg gap-1 flex items-center ${
-              theme === "dark" ? "text-gray-300" : "text-black"
-            }`}
-          >
-            <PencilToSquare />
-            <span>Write</span>
-          </div>
+          <CreatePostModal 
+            nameButton="Write" 
+            icon={<PencilToSquare />}
+            headerTitle="Create Post"
+            className={`px-3 py-0.5 text-lg cursor-pointer rounded-lg gap-1 flex items-center bg-transparent ${theme === 'dark' ? 'text-gray-300' : 'text-black' }`}/>
           </> : (
             <Button onClick={()=> window.location.href = "/login"} className="mr-0 text-white dark:bg-blue-400">
               Sign In/ Sign Up

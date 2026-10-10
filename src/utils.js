@@ -1,12 +1,12 @@
 import { Bell, Envelope, BookOpen, ShieldKeyhole, ArrowRightFromSquare, Gear, House, Magnifier, Person } from "@gravity-ui/icons";
 
 const SIDEBARITEMS = [
-    { icon: House, label: "Home" },
-    { icon: Magnifier, label: "Search" },
-    { icon: Bell, label: "Notifications" },
-    { icon: Envelope, label: "Messages" },
-    { icon: Person, label: "Profile" },
-    { icon: Gear, label: "Settings" }
+    { id: 1, icon: House, label: "Home", path: "/" },
+    { id: 2, icon: Magnifier, label: "Search", path: "" },
+    { id: 3, icon: Bell, label: "Notifications", path: "" },
+    { id: 4, icon: Envelope, label: "Messages", path: "" },
+    { id: 5, icon: Person, label: "Profile", path: "" },
+    { id: 6, icon: Gear, label: "Settings", path: "" }
 ];
 
 const NAVBARITEMS = [

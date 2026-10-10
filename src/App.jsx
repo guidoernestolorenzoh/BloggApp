@@ -45,7 +45,7 @@ function App() {
           <Route path='/authors' element={<Authors />} />
           <Route path='/about-us' element={<About />} />        
           <Route path='/contact-us' element={<ContactUs />} />
-          <Route path='/posts:id' element={<Post />}/>
+          <Route path='/post' element={<Post />}/>
           <Route path='/tag/:tagName' element={<PostByTags/>}/>
           <Route element={<ProtectedRoute />}>
           </Route>
