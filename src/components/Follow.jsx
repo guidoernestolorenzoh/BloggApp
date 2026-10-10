@@ -3,7 +3,7 @@ import { Button } from "@heroui/react";
 const Follow = ({className}) => {
   return (
     <Button className={className}>
-      <span className="text-lg font-light">Follow</span>
+      <span className="text-sm font-medium">Follow</span>
     </Button>
   );
 };

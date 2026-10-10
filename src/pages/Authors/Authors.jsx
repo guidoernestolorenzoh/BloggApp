@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Button,
   Description,
   Label
 } from "@heroui/react";
@@ -34,7 +35,10 @@ const Authors = () => {
                     </Avatar.Fallback>
                   </Avatar>
                   {/* Follow Button */}
-                  <Follow className="px-3 py-5 bg-zinc-100 text-accent border border-blue-500 dark:bg-accent/10 dark:text-blue-400"/>
+                  <div className="flex gap-2">
+                    <Follow className="w-20 px-4 py-2 max-w-36 bg-zinc-100 text-accent border border-blue-500 dark:bg-accent/10 dark:text-blue-400"/>
+                    <Button className="w-20 bg-zinc-100 text-accent border border-blue-500 dark:bg-accent/10 dark:text-blue-400">Ver Perfil</Button>
+                  </div>
                 </div>
                 <div className="flex flex-col">
                   <Label className="text-3xl w-64 overflow-hidden text-ellipsis whitespace-nowrap">
