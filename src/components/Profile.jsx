@@ -3,7 +3,7 @@ import { Avatar, Dropdown, Label, cn } from "@heroui/react";
 import { AVATARITEMS } from "../utils";
 
 
-const Profile = ({ user, theme, isOpen }) => {
+const Profile = ({ user, theme, isOpen, className, onOpenChange }) => {
   const isAdmin = user?.isAdmin;
   const items = AVATARITEMS.filter((prev) => (prev.label !== "Admin Panel" || isAdmin));
 
@@ -14,14 +14,14 @@ const Profile = ({ user, theme, isOpen }) => {
   }
 
   return (
-    <Dropdown>
+    <Dropdown isOpen={isOpen} onOpenChange={onOpenChange}>
       <Dropdown.Trigger className="rounded-full">
-        <Avatar>
-          <Avatar.Image alt={user?.name} src={user?.imageProfile} />
-          <Avatar.Fallback className="bg-blue-400 text-white" delayMs={600}>{user?.name?.charAt(0)}</Avatar.Fallback>
+      <Avatar className={cn("w-10 h-10 shrink-0", className)}>
+          <Avatar.Image alt={user?.name} src={user?.imageProfile} className="object-cover w-full h-full"/>
+          <Avatar.Fallback className={className}  delayMs={600}>{user?.name?.charAt(0)}</Avatar.Fallback>
         </Avatar>
       </Dropdown.Trigger>
-      <Dropdown.Popover isOpen={isOpen}>
+      <Dropdown.Popover>
         <div className={`px-3 pt-3 pb-1 `}>
           <div className="flex items-center gap-2">
             <Avatar size="sm">

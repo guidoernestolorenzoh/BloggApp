@@ -22,3 +22,7 @@
 .text-area-rounded {
     @apply w-full rounded-2xl border outline-0 bg-white py-3.5 px-4 text-sm text-gray-700 placeholder:text-gray-400 dark:bg-zinc-900 dark:border dark:border-zinc-700 dark:text-gray-200 dark:outline-0
 }
+
+.button-outline-rounded {
+    @apply w-20 px-4 py-2 max-w-36 bg-zinc-100 text-accent border border-blue-500 dark:bg-accent/10 dark:text-blue-400
+}

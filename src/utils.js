@@ -27,32 +27,32 @@ const followers = [
       name: "Bob Dylan",
       email: "bob@heroui.com",
       cargo: "Maestro de Educación Cristiana",
-      description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-      img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=3",
+      description: "Bob es un siervo de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.",
+      imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=3",
     },
     {
       id: "2",
       name: "Kate Freeman",
       email: "kate@heroui.com",
       cargo: "Escritor y profesional",
-      description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-      img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=4",
+      description: "Bob es un siervo de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.",
+      imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=4",
     },
     {
       id: "3",
       name: "Martha Sanchez",
       email: "martha@heroui.com",
       cargo: "Director de Alabanzas",
-      description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-      img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=5",
+      description: "Bob es un siervo de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.",
+      imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=5",
     },
     {
       id: "4",
       name: "Pedro Martinez",
       email: "pedro@heroui.com",
       cargo: "Maestro de niños",
-      description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-      img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=8",
+      description: "Bob es un siervo de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.",
+      imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=8",
     }
   ];
 
@@ -140,6 +140,145 @@ const followers = [
     },
   ];
 
-  const user = {name: "Peter Crow", email: "user@gmail.com", imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=9", isAdmin: true}
+  const commentsData = [
+    {
+      id: 1,
+      user: {
+        id: 101,
+        name: "María González",
+        avatar: "https://i.pravatar.cc/150?img=1",
+        username: "maria_g",
+      },
+      createdAt: "2024-06-10T14:32:00Z",
+      text: "Beautiful post, spoke to me, I'm impressed. The way you described the sunset reminded me of my hometown. The way you described the sunset reminded me of my hometown. The way you described the sunset reminded me of my hometown. The way you described the sunset reminded me of my hometown.",
+      likes: 24,
+      isLiked: false,
+      replies: [
+        {
+          id: 11,
+          user: {
+            id: 102,
+            name: "Carlos Ruiz",
+            avatar: "https://i.pravatar.cc/150?img=12",
+          },
+          text: "Totally agree, that part got me too.",
+          createdAt: "2023-05-10T15:10:00Z",
+          likes: 3,
+        },
+      ],
+    },
+    {
+      id: 2,
+      user: {
+        id: 103,
+        name: "John Doe",
+        avatar: "https://i.pravatar.cc/150?img=5",
+        username: "johndoe",
+      },
+      createdAt: "2024-07-09T09:15:00Z",
+      text: "Great work! Could you share the resources you used for this project? I'd love to learn more about your process.",
+      likes: 12,
+      isLiked: true,
+      replies: [],
+    },
+    {
+      id: 3,
+      user: {
+        id: 104,
+        name: "Ana Martínez",
+        avatar: "https://i.pravatar.cc/150?img=9",
+        username: "ana_mtz",
+      },
+      createdAt: "2026-03-08T22:45:00Z",
+      text: "Increíble trabajo 🔥 La atención al detalle es impresionante. ¿Podrías explicar cómo manejaste la parte del dropdown personalizado?",
+      likes: 41,
+      isLiked: false,
+      replies: [
+        {
+          id: 31,
+          user: {
+            id: 105,
+            name: "Author",
+            avatar: "https://i.pravatar.cc/150?img=15",
+          },
+          text: "@ana_mtz claro! Usé un useEffect con mousedown para detectar clics fuera del ref.",
+          createdAt: "2025-09-08T23:02:00Z",
+          likes: 8,
+        },
+      ],
+    },
+    {
+      id: 4,
+      user: {
+        id: 106,
+        name: "Pedro López",
+        avatar: "https://i.pravatar.cc/150?img=8",
+        username: "pedrol",
+      },
+      createdAt: "2024-06-07T11:20:00Z",
+      text: "Not sure I agree with the approach here, but the execution is clean. Keep it up!",
+      likes: 5,
+      isLiked: false,
+      replies: [],
+    },
+    {
+      id: 5,
+      user: {
+        id: 107,
+        name: "Sofía Ramírez",
+        avatar: "https://i.pravatar.cc/150?img=20",
+        username: "sofia_rmz",
+      },
+      createdAt: "2024-05-06T18:55:00Z",
+      text: "This is exactly what I needed today. Saving it for later reference 🙌",
+      likes: 17,
+      isLiked: false,
+      replies: [],
+    },
+  ];
+
+  const uploadedBlogs = [
+    {
+      id: "1",
+      title:
+        "Implementing Electronic Health Records: A Case Study of the Generation",
+      date: "June 20, 2024",
+      img: "https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-1024x681.jpg",
+    },
+    {
+      id: "2",
+      title:
+        "cybersecurity Challengers and Solutions: A Case Study of the Palace",
+      date: "April 24, 2025",
+      img: "https://media.istockphoto.com/id/1299198919/es/foto/fotograf%C3%ADa-a%C3%A9rea-de-la-costa-del-oc%C3%A9ano-acu%C3%A1tico-y-el-hombre-caminando-a-lo-largo-de-la-playa.jpg?s=2048x2048&w=is&k=20&c=RosalKzGfwlUClMr76fcO9BU-fPFlvc2kPkJxBSFeig=",
+    },
+    {
+      id: "3",
+      title: "Digital Marketing Transformation at unilever",
+      date: "January 28, 2024",
+      img: "https://media.istockphoto.com/id/1277467049/es/foto/idyllic-rock-pool.jpg?s=2048x2048&w=is&k=20&c=jMC_lLVjndnlAfN-QbqlCutG9P369HyklKm3TYTWEHw=",
+    },
+    {
+      id: "4",
+      title: "The Impact of the Bloackchain on Financial Service",
+      date: "July 13, 2026",
+      img: "https://media.istockphoto.com/id/2002034452/es/foto/vista-a%C3%A9rea-de-la-escena-costera-con-bah%C3%ADa-de-agua-y-rocas-rojas-al-amanecer.jpg?s=2048x2048&w=is&k=20&c=riJW2_GZYv1piVrQUK3XuBuI-082cffODQ3vpuesE68=",
+    },
+  ];
+  
+// Helper para formatear tiempo relativo
+const timeAgo = (dateString) => {
+  const diff = Date.now() - new Date(dateString).getTime();
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  if (days === 0) return "today";
+  if (days === 1) return "1 day ago";
+  if (days < 7) return `${days} days ago`;
+  const weeks = Math.floor(days / 7);
+  if (weeks < 4) return `${weeks} week${weeks > 1 ? "s" : ""} ago`;
+  const months = Math.floor(days / 30);
+  return `${months} month${months > 1 ? "s" : ""} ago`;
+};
+
+  const user = {name: "Peter Crow", email: "user@gmail.com", imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=8", isAdmin: true}
   const userHome = {name: "Martha Sanchez", email: "martha@gmail.com", imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=5", isAdmin: false}
-export { SIDEBARITEMS, NAVBARITEMS, AVATARITEMS, followers, user, userHome, posts};
+export { SIDEBARITEMS, NAVBARITEMS, AVATARITEMS, uploadedBlogs, followers, user, userHome, posts, commentsData, timeAgo};

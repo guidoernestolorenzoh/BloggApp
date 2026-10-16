@@ -11,71 +11,10 @@ import {
   Chip,
 } from "@heroui/react";
 import { CirclePlus } from "@gravity-ui/icons";
-
-const followers = [
-  {
-    id: "1",
-    name: "Bob Dylan",
-    email: "bob@heroui.com",
-    description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=3",
-  },
-  {
-    id: "2",
-    name: "Kate Freeman",
-    email: "kate@heroui.com",
-    description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=4",
-  },
-  {
-    id: "3",
-    name: "Martha Sanchez",
-    email: "martha@heroui.com",
-    description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=5",
-  },
-  {
-    id: "4",
-    name: "Pedro Martinez",
-    email: "pedro@heroui.com",
-    description: "Lorenm ipsum Lorenm ipsumLorenm ipsumLorenm ipsumLorenm",
-    img: "https://img.heroui.chat/image/avatar?w=400&h=400&u=6",
-  },
-];
-
-const uploadedBlogs = [
-  {
-    id: "1",
-    title:
-      "Implementing Electronic Health Records: A Case Study of the Generation",
-    date: "June 20, 2024",
-    img: "https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-1024x681.jpg",
-  },
-  {
-    id: "2",
-    title:
-      "cybersecurity Challengers and Solutions: A Case Study of the Palace",
-    date: "April 24, 2025",
-    img: "https://media.istockphoto.com/id/1299198919/es/foto/fotograf%C3%ADa-a%C3%A9rea-de-la-costa-del-oc%C3%A9ano-acu%C3%A1tico-y-el-hombre-caminando-a-lo-largo-de-la-playa.jpg?s=2048x2048&w=is&k=20&c=RosalKzGfwlUClMr76fcO9BU-fPFlvc2kPkJxBSFeig=",
-  },
-  {
-    id: "3",
-    title: "Digital Marketing Transformation at unilever",
-    date: "January 28, 2024",
-    img: "https://media.istockphoto.com/id/1277467049/es/foto/idyllic-rock-pool.jpg?s=2048x2048&w=is&k=20&c=jMC_lLVjndnlAfN-QbqlCutG9P369HyklKm3TYTWEHw=",
-  },
-  {
-    id: "4",
-    title: "The Impact of the Bloackchain on Financial Service",
-    date: "July 13, 2026",
-    img: "https://media.istockphoto.com/id/2002034452/es/foto/vista-a%C3%A9rea-de-la-escena-costera-con-bah%C3%ADa-de-agua-y-rocas-rojas-al-amanecer.jpg?s=2048x2048&w=is&k=20&c=riJW2_GZYv1piVrQUK3XuBuI-082cffODQ3vpuesE68=",
-  },
-];
+import { followers, uploadedBlogs } from "../utils";
 
 const RightBar = () => {
-  // const [theme, setTheme] = useState(() => {
-  //   return localStorage.getItem("theme") || "light";
-  // });
+  
   const {theme} = useTheme();
   return (
     <aside className="h-full w-96 bg-white shrink-0 text-black shadow-md flex flex-col px-6 pt-6 z-30 dark:bg-[#121212] border-l border-gray-100 overflow-y-auto dark:border-gray-800">
@@ -104,7 +43,7 @@ const RightBar = () => {
             >
               <div className="flex gap-4 items-center">
                 <Avatar size="sm">
-                  <Avatar.Image alt={f.name} src={f.img} />
+                  <Avatar.Image alt={f.name} src={f.imageProfile} />
                   <Avatar.Fallback>{f.name.charAt(0)}</Avatar.Fallback>
                 </Avatar>
                 <div className="flex flex-col min-w-44 max-w-44">

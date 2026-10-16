@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div className="flex flex-col mx-16">
       <h1 className="text-4xl font-semibold my-6">About us</h1>
-      <img src={Banner} alt="about us" className='h-105 rounded-3xl'/>
+      <img src={Banner} alt="about us" className='h-105 rounded-3xl object-cover'/>
       <p className="mt-6 text-justify text-xl">
       Bienvenido a <span className="font-bold">Filadelfia Blog</span>, un espacio digital donde la fe, la esperanza y el amor de Dios se encuentran con la vida cotidiana. Nacimos con el 
       deseo de compartir la Palabra de Dios de una manera clara, cercana y relevante. Aquí no buscamos imponer ideas, sino sembrar esperanza, 

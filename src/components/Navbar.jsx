@@ -201,7 +201,7 @@ const Navbar = () => {
           </div>
           
           {/* profile */}
-          <Profile theme={theme} user={user} className="cursor-pointer"/>
+          <Profile theme={theme} user={user} className="text-lg bg-blue-400 text-white cursor-pointer"/>
 
           {/* write */}
           <CreatePostModal 

@@ -5,8 +5,9 @@ import {
   Label
 } from "@heroui/react";
 import { Persons, PencilToLine, HeartFill } from "@gravity-ui/icons";
-import { followers } from "../../utils";
+import { posts } from "../../utils";
 import Follow from "../../components/Follow";
+import Profile from "../../components/Profile";
 
 
 
@@ -21,19 +22,15 @@ const Authors = () => {
 
       <div className="flex justify-center items-center">
         <ul className="flex flex-wrap gap-2 mt-4">
-          {followers.map((f) => (
+          {posts.map((f) => (
             <li
               key={f.id}
-              className="flex items-center justify-between  shrink-0 bg-zinc-100 max-w-lg rounded-4xl my-2 mx-4 px-8 py-6 dark:text-gray-300 dark:bg-zinc-900 border bg-linear-to-br from-accent/5 via-surface to-surface-secondary shadow-lg shadow-accent/5 dark:border-accent/10 dark:from-accent/10 dark:via-surface dark:to-accent/8 dark:shadow-accent/5"
+              className="flex items-center justify-between shrink-0 bg-zinc-100 max-w-lg rounded-4xl my-2 mx-4 px-8 py-6 dark:text-gray-300 dark:bg-zinc-900 border bg-linear-to-br from-accent/5 via-surface to-surface-secondary shadow-lg shadow-accent/5 dark:border-accent/10 dark:from-accent/10 dark:via-surface dark:to-accent/8 dark:shadow-accent/5"
             >
               <div className="flex gap-4 items-center">
                 <div className="flex flex-col items-center space-y-4">
-                  <Avatar className="size-40 rounded-full">
-                    <Avatar.Image alt={f.name} src={f.img} />
-                    <Avatar.Fallback className="text-3xl">
-                      {f.name.charAt(0)}
-                    </Avatar.Fallback>
-                  </Avatar>
+                  <Profile user={f?.author} isOpen={false} className="text-5xl bg-blue-400 size-40 rounded-full text-white cursor-pointer"/>
+
                   {/* Follow Button */}
                   <div className="flex gap-2">
                     <Follow className="w-20 px-4 py-2 max-w-36 bg-zinc-100 text-accent border border-blue-500 dark:bg-accent/10 dark:text-blue-400"/>
@@ -42,10 +39,10 @@ const Authors = () => {
                 </div>
                 <div className="flex flex-col">
                   <Label className="text-3xl w-64 overflow-hidden text-ellipsis whitespace-nowrap">
-                    {f.name}
+                    {f?.author?.name}
                   </Label>
-                  <Description>{f.email}</Description>
-                  <span className="my-2 text-lg">{f.cargo}</span>
+                  <Description>{f?.author?.email}</Description>
+                  <span className="my-2 text-lg">{f?.author?.role}</span>
                   <div className="flex items-center justify-evenly text-lg gap-2">
                     <div className="flex text-[#5893f1] items-center text-lg gap-2">
                       <Persons />
@@ -60,7 +57,7 @@ const Authors = () => {
                       <span className="">1k</span>
                     </div>
                   </div>
-                  <p className="my-2 text-sm text-justify">{`${f.name} es un siervo de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.`}</p>
+                  <p className="my-2 text-sm text-justify">{`${f?.author?.name} es un siervo de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.`}</p>
                 </div>
               </div>
             </li>
@@ -72,3 +69,4 @@ const Authors = () => {
 };
 
 export default Authors;
+

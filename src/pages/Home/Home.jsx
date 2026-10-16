@@ -16,7 +16,7 @@ const Home = () => {
                   <Profile user={p?.author} isOpen={false} />
                   <span className="text-lg">{p?.author?.name}</span>
                 </div>
-                <span className="text-xl">•</span>
+                <span className="text-xl text-green-400">•</span>
                 <span className="text-lg text-gray-500">{p?.timeAgo}</span>
               </div>
             </div>

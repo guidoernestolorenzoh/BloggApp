@@ -7,11 +7,11 @@ import Authors from './pages/Authors/Authors'
 import About from './pages/About/About'
 import ContactUs from './pages/ContactUs/ContactUs'
 import ProtectedRoute from './components/ProtectedRoute'
-import Post from './pages/Post/Post'
 import PostByTags from './pages/PostByTags/PostByTags'
 import PostPage from './pages/PostPage/PostPage'
 import { useTheme } from './store/useThemeStore'
 import { useEffect } from 'react'
+import AuthorProfile from './pages/Authors/AuthorProfile'
 
 
 function App() {  
@@ -43,9 +43,9 @@ function App() {
         <Route path='/' element={<AppLayout />}>          
           <Route index element={<Home />}/>
           <Route path='/authors' element={<Authors />} />
+          <Route path='/author/:id' element={<AuthorProfile />}/>
           <Route path='/about-us' element={<About />} />        
           <Route path='/contact-us' element={<ContactUs />} />
-          <Route path='/post' element={<Post />}/>
           <Route path='/tag/:tagName' element={<PostByTags/>}/>
           <Route element={<ProtectedRoute />}>
           </Route>
