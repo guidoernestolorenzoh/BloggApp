@@ -29,7 +29,7 @@ const Authors = () => {
             >
               <div className="flex gap-4 items-center">
                 <div className="flex flex-col items-center space-y-4">
-                  <Profile user={f?.author} isOpen={false} className="text-5xl bg-blue-400 size-40 rounded-full text-white cursor-pointer"/>
+                  <Profile user={f?.author} src={f.author.imageProfile} isOpen={false} className="text-5xl bg-blue-400 size-40 rounded-full text-white cursor-pointer"/>
 
                   {/* Follow Button */}
                   <div className="flex gap-2">

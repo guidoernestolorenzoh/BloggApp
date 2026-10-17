@@ -9,6 +9,7 @@ import {
 } from "@gravity-ui/icons";
 import { Avatar, Button, Label } from "@heroui/react";
 import Follow from "./Follow";
+import Image from "./Image";
 
 const TabsAuthors = () => {
   const [activeTab, setActiveTab] = useState("posts");
@@ -30,9 +31,8 @@ const TabsAuthors = () => {
               className="flex items-center justify-between my-2 mx-4 rounded-lg p-1"
             >
               <div className="flex gap-4 items-center">
-                <Avatar className="rounded-lg" size="lg">
-                  <Avatar.Image alt={u.name} src={u.img} />
-                </Avatar>
+                <Profile user={u} src={u.image} className="rounded-lg" size="lg"/>
+                
                 <div className="flex flex-col">
                   <Label className="line-clamp-2 text-xl max-w-2xl text-ellipsis">
                   {u.title}
@@ -67,11 +67,8 @@ const TabsAuthors = () => {
             de explorar, comentar y compartir.
           </p>
 
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/075/317/752/non_2x/a-man-sitting-at-a-desk-with-a-map-and-a-computer-photo.jpg"
-            className="object-cover rounded-2xl h-130 w-full mb-4"
-          />
-
+          <Image className="object-cover rounded-2xl h-130 w-full mb-4" src="https://static.vecteezy.com/system/resources/previews/075/317/752/non_2x/a-man-sitting-at-a-desk-with-a-map-and-a-computer-photo.jpg" />
+        
           <p className="text-justify text-lg">
             Creo en el poder de las pequeñas historias para generar grandes
             cambios. Escríbeme si necesitas oración o si quieres compartir tu
@@ -112,6 +109,7 @@ const TabsAuthors = () => {
               <div className="flex items-start gap-5">
                 <Profile
                   user={f}
+                  src={f.imageProfile}
                   isOpen={false}
                   className="cursor-pointer rounded-full h-12 w-12 bg-blue-400 text-white"
                 />
@@ -141,6 +139,7 @@ const TabsAuthors = () => {
               <div className="flex gap-3 items-center">
                 <Profile
                   user={c?.user}
+                  src={c.user.avatar}
                   isOpen={false}
                   className="cursor-pointer bg-blue-400 text-white"
                 />
@@ -191,6 +190,7 @@ const TabsAuthors = () => {
                       <div className="flex gap-2 items-center">
                         <Profile
                           user={reply.user}
+                          src={reply.user.avatar}
                           isOpen={false}
                           className="cursor-pointer bg-purple-400 text-white"
                         />

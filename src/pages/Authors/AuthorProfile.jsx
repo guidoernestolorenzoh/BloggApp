@@ -4,21 +4,19 @@ import Profile from "../../components/Profile";
 import { user } from "../../utils";
 import Follow from "../../components/Follow";
 import TabsAuthors from "../../components/TabsAuthors";
+import Image from "../../components/Image";
 
 const AuthorProfile = () => {
   return (
     <div className="flex flex-col ml-5">
       {/* Banner */}
-      <img
-        src={Banner}
-        className="h-80 w-full object-cover"
-        alt="Banner"
-      />
-
+      <Image src={Banner} className="h-80 w-full object-cover" alt="Banner" />
+      
       <div className="flex justify-between items-center">
         <div className="flex items-start gap-4 px-8 -mt-16">
           <Profile
             user={user}
+            src={user.imageProfile}
             isOpen={false}
             className="w-32 h-32 ring-4 text-5xl ring-white rounded-full shrink-0"
           />

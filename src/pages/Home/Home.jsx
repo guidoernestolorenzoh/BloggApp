@@ -3,6 +3,7 @@ import Follow from "../../components/Follow";
 import Profile from "../../components/Profile";
 import { posts } from "../../utils";
 import { Heart, Comment, NodesRight } from "@gravity-ui/icons";
+import Image from "../../components/Image";
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
             <div className="flex flex-col mx-16">
               <div className="flex items-center my-5 gap-2">
                 <div className="flex items-center gap-4">
-                  <Profile user={p?.author} isOpen={false} />
+                  <Profile user={p?.author} src={p.author.imageProfile} isOpen={false} />
                   <span className="text-lg">{p?.author?.name}</span>
                 </div>
                 <span className="text-xl text-green-400">•</span>
@@ -40,11 +41,8 @@ const Home = () => {
                 </Link>
               </p>
 
-              <img
-                src={p?.image}
-                className="h-105 rounded-4xl"
-                alt="Winners"
-              />
+              <Image src={p?.image} className="h-105 rounded-4xl" alt="Winners" />
+
               <div className="flex justify-between mt-2 items-center">
                 <div className="flex items-center gap-1 text-lg">
                   <Button variant="ghost">

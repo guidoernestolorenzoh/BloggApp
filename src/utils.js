@@ -1,5 +1,43 @@
 import { Bell, Envelope, BookOpen, ShieldKeyhole, ArrowRightFromSquare, Gear, House, Magnifier, Person } from "@gravity-ui/icons";
 
+export const formatearTextoEnParrafos = (texto, oracionesPorParrafo = 3) => {
+  if (!texto) return [];
+
+  const oraciones = texto.match(/[^.!?]+[.!?]+(\s|$)/g) || [texto];
+
+  if (oraciones.length === 1 && oraciones[0].length > 300) {
+    return dividirPorLongitud(oraciones[0], 40); // 40 palabras por párrafo aprox.
+  }
+
+  const parrafos = [];
+  for (let i = 0; i < oraciones.length; i += oracionesPorParrafo) {
+    // Unimos las oraciones del bloque y limpiamos espacios extra
+    const parrafo = oraciones
+      .slice(i, i + oracionesPorParrafo)
+      .join(' ')
+      .trim();
+    parrafos.push(parrafo);
+  }
+
+  return parrafos;
+};
+
+const dividirPorLongitud = (texto, palabrasPorParrafo) => {
+  const palabras = texto.split(' ');
+  const parrafos = [];
+  let parrafoActual = [];
+
+  palabras.forEach((palabra, index) => {
+    parrafoActual.push(palabra);
+    if (parrafoActual.length >= palabrasPorParrafo || index === palabras.length - 1) {
+      parrafos.push(parrafoActual.join(' '));
+      parrafoActual = [];
+    }
+  });
+
+  return parrafos;
+};
+
 const SIDEBARITEMS = [
     { id: 1, icon: House, label: "Home", path: "/" },
     { id: 2, icon: Magnifier, label: "Search", path: "" },
@@ -35,7 +73,7 @@ const followers = [
       name: "Kate Freeman",
       email: "kate@heroui.com",
       cargo: "Escritor y profesional",
-      description: "Bob es un siervo de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.",
+      description: "Kate es una sierva de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.",
       imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=4",
     },
     {
@@ -43,7 +81,7 @@ const followers = [
       name: "Martha Sanchez",
       email: "martha@heroui.com",
       cargo: "Director de Alabanzas",
-      description: "Bob es un siervo de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.",
+      description: "Martha es una sierva de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.",
       imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=5",
     },
     {
@@ -51,7 +89,7 @@ const followers = [
       name: "Pedro Martinez",
       email: "pedro@heroui.com",
       cargo: "Maestro de niños",
-      description: "Bob es un siervo de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.",
+      description: "Pedro es un siervo de Dios comprometido con compartir el amor de Cristo. A través de sus escritos busca inspirar, enseñar y fortalecer la fe de quienes lo leen.",
       imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=8",
     }
   ];
@@ -243,26 +281,26 @@ const followers = [
       title:
         "Implementing Electronic Health Records: A Case Study of the Generation",
       date: "June 20, 2024",
-      img: "https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-1024x681.jpg",
+      image: "https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-1024x681.jpg",
     },
     {
       id: "2",
       title:
         "cybersecurity Challengers and Solutions: A Case Study of the Palace",
       date: "April 24, 2025",
-      img: "https://media.istockphoto.com/id/1299198919/es/foto/fotograf%C3%ADa-a%C3%A9rea-de-la-costa-del-oc%C3%A9ano-acu%C3%A1tico-y-el-hombre-caminando-a-lo-largo-de-la-playa.jpg?s=2048x2048&w=is&k=20&c=RosalKzGfwlUClMr76fcO9BU-fPFlvc2kPkJxBSFeig=",
+      image: "https://media.istockphoto.com/id/1299198919/es/foto/fotograf%C3%ADa-a%C3%A9rea-de-la-costa-del-oc%C3%A9ano-acu%C3%A1tico-y-el-hombre-caminando-a-lo-largo-de-la-playa.jpg?s=2048x2048&w=is&k=20&c=RosalKzGfwlUClMr76fcO9BU-fPFlvc2kPkJxBSFeig=",
     },
     {
       id: "3",
       title: "Digital Marketing Transformation at unilever",
       date: "January 28, 2024",
-      img: "https://media.istockphoto.com/id/1277467049/es/foto/idyllic-rock-pool.jpg?s=2048x2048&w=is&k=20&c=jMC_lLVjndnlAfN-QbqlCutG9P369HyklKm3TYTWEHw=",
+      image: "https://media.istockphoto.com/id/1277467049/es/foto/idyllic-rock-pool.jpg?s=2048x2048&w=is&k=20&c=jMC_lLVjndnlAfN-QbqlCutG9P369HyklKm3TYTWEHw=",
     },
     {
       id: "4",
       title: "The Impact of the Bloackchain on Financial Service",
       date: "July 13, 2026",
-      img: "https://media.istockphoto.com/id/2002034452/es/foto/vista-a%C3%A9rea-de-la-escena-costera-con-bah%C3%ADa-de-agua-y-rocas-rojas-al-amanecer.jpg?s=2048x2048&w=is&k=20&c=riJW2_GZYv1piVrQUK3XuBuI-082cffODQ3vpuesE68=",
+      image: "https://media.istockphoto.com/id/2002034452/es/foto/vista-a%C3%A9rea-de-la-escena-costera-con-bah%C3%ADa-de-agua-y-rocas-rojas-al-amanecer.jpg?s=2048x2048&w=is&k=20&c=riJW2_GZYv1piVrQUK3XuBuI-082cffODQ3vpuesE68=",
     },
   ];
   
@@ -279,6 +317,28 @@ const timeAgo = (dateString) => {
   return `${months} month${months > 1 ? "s" : ""} ago`;
 };
 
+  const post = {
+    id: "post-1",
+    author: {
+      id: "u1",
+      name: "Ana Gutiérrez",
+      email: "ana@heroui.com",
+      imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=11",
+      isAdmin: false,
+      role: "Editora",
+    },
+    timeAgo: "5 days ago",
+    title: "Champions Again: India's Glorious World Cup!!",
+    excerpt:
+      "La India vuelve a coronarse campeona del mundo. Millones de aficionados celebran, los estadios se llenan de gritos y el nombre del equipo queda escrito una vez más en la historia del críquet. Pero más allá del trofeo, esta victoria nos deja lecciones que también hablan a nuestro corazón cristiano.",
+    content: "India celebra una victoria histórica en el Mundial de Críquet 2024 tras derrotar a Inglaterra en una final electrizante. Bajo el liderazgo de Rohit Sharma, el equipo mostró una mezcla perfecta de estrategia, pasión y trabajo en equipo. “Esta victoria refleja la fuerza y el espíritu de nuestra nación”, declaró Sharma tras levantar el trofeo. El triunfo consolida a India como potencia mundial del críquet y deja una huella imborrable en la historia del deporte. India celebra una victoria histórica en el Mundial de Críquet 2024 tras derrotar a Inglaterra en una final electrizante. Bajo el liderazgo de Rohit Sharma, el equipo mostró una mezcla perfecta de estrategia, pasión y trabajo en equipo. “Esta victoria refleja la fuerza y el espíritu de nuestra nación”, declaró Sharma tras levantar el trofeo. El triunfo consolida a India como potencia mundial del críquet y deja una huella imborrable en la historia del deporte. India celebra una victoria histórica en el Mundial de Críquet 2024 tras derrotar a Inglaterra en una final electrizante. Bajo el liderazgo de Rohit Sharma, el equipo mostró una mezcla perfecta de estrategia, pasión y trabajo en equipo. “Esta victoria refleja la fuerza y el espíritu de nuestra nación”, declaró Sharma tras levantar el trofeo. El triunfo consolida a India como potencia mundial del críquet y deja una huella imborrable en la historia del deporte. India celebra una victoria histórica en el Mundial de Críquet 2024 tras derrotar a Inglaterra en una final electrizante. Bajo el liderazgo de Rohit Sharma, el equipo mostró una mezcla perfecta de estrategia, pasión y trabajo en equipo. “Esta victoria refleja la fuerza y el espíritu de nuestra nación”, declaró Sharma tras levantar el trofeo. El triunfo consolida a India como potencia mundial del críquet y deja una huella imborrable en la historia del deporte. India celebra una victoria histórica en el Mundial de Críquet 2024 tras derrotar a Inglaterra en una final electrizante. Bajo el liderazgo de Rohit Sharma, el equipo mostró una mezcla perfecta de estrategia, pasión y trabajo en equipo. “Esta victoria refleja la fuerza y el espíritu de nuestra nación”, declaró Sharma tras levantar el trofeo. El triunfo consolida a India como potencia mundial del críquet y deja una huella imborrable en la historia del deporte. ",
+      image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlXt2PZm9PcAllep4u_ne3gp17c8RdM5CFKjSpUhIq2g&s=10",
+    likes: "2.1k",
+    comments: 26,
+    shares: 35,
+    tags: ["Fe", "Deportes", "India"],
+  }
   const user = {name: "Peter Crow", email: "user@gmail.com", imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=8", isAdmin: true}
   const userHome = {name: "Martha Sanchez", email: "martha@gmail.com", imageProfile: "https://img.heroui.chat/image/avatar?w=400&h=400&u=5", isAdmin: false}
-export { SIDEBARITEMS, NAVBARITEMS, AVATARITEMS, uploadedBlogs, followers, user, userHome, posts, commentsData, timeAgo};
+export { SIDEBARITEMS, NAVBARITEMS, AVATARITEMS, uploadedBlogs, followers, post, user, userHome, posts, commentsData, timeAgo};

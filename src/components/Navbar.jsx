@@ -15,7 +15,7 @@ import {
   Switch,
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NAVBARITEMS } from "../utils";
 import Search from "./Search";
 import Profile from "./Profile";
@@ -201,7 +201,7 @@ const Navbar = () => {
           </div>
           
           {/* profile */}
-          <Profile theme={theme} user={user} className="text-lg bg-blue-400 text-white cursor-pointer"/>
+          <Profile theme={theme} user={user} src={user.imageProfile} className="text-lg bg-blue-400 text-white cursor-pointer"/>
 
           {/* write */}
           <CreatePostModal 

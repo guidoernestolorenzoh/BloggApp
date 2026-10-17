@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Search from "./Search";
 import { useTheme } from "../store/useThemeStore";
 import {
@@ -12,6 +11,7 @@ import {
 } from "@heroui/react";
 import { CirclePlus } from "@gravity-ui/icons";
 import { followers, uploadedBlogs } from "../utils";
+import Profile from "./Profile";
 
 const RightBar = () => {
   
@@ -42,10 +42,8 @@ const RightBar = () => {
               className="flex items-center justify-between my-2 mx-4 rounded-lg p-1"
             >
               <div className="flex gap-4 items-center">
-                <Avatar size="sm">
-                  <Avatar.Image alt={f.name} src={f.imageProfile} />
-                  <Avatar.Fallback>{f.name.charAt(0)}</Avatar.Fallback>
-                </Avatar>
+                <Profile user={f.imageProfile} src={f.imageProfile}  isOpen={false} />
+                
                 <div className="flex flex-col min-w-44 max-w-44">
                   <Label>{f.name}</Label>
                   <Description className="line-clamp-2">
@@ -95,9 +93,8 @@ const RightBar = () => {
               className="flex items-center justify-between my-2 mx-4 rounded-lg p-1"
             >
               <div className="flex gap-4 items-center">
-                <Avatar className="rounded-lg" size="lg">
-                  <Avatar.Image alt={u.name} src={u.img} />
-                </Avatar>
+              <Profile className="rounded-lg" size="lg" alt={u.name} user={u} src={u.image} />
+                
                 <div className="flex flex-col">
                   <Label className="line-clamp-2 text-md">{u.title}</Label>
                   <div className="text-sm font-light dark:text-gray-200">
@@ -111,7 +108,7 @@ const RightBar = () => {
         {/* see more */}
         <div className="mx-2 mt-2 mb-5">
           <a className="w-full cursor-pointer text-sm text-green-500 dark:text-green-300">
-            See more people...
+            See more blogs...
           </a>
         </div>
 
