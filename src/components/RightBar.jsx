@@ -1,7 +1,6 @@
 import Search from "./Search";
 import { useTheme } from "../store/useThemeStore";
 import {
-  Avatar,
   Description,
   Label,
   Separator,
@@ -14,10 +13,9 @@ import { followers, uploadedBlogs } from "../utils";
 import Profile from "./Profile";
 
 const RightBar = () => {
-  
-  const {theme} = useTheme();
+  const { theme } = useTheme();
   return (
-    <aside className="h-full w-96 bg-white shrink-0 text-black shadow-md flex flex-col px-6 pt-6 z-30 dark:bg-[#121212] border-l border-gray-100 overflow-y-auto dark:border-gray-800">
+    <aside className="h-full w-96 bg-white shrink-0 text-black shadow-md flex flex-col px-6 pt-6 z-30 dark:bg-[#121212] border-l border-gray-100 overflow-y-auto min-h-0 dark:border-gray-800">
       <div className="flex flex-col">
         {/* search */}
         <Search
@@ -42,8 +40,12 @@ const RightBar = () => {
               className="flex items-center justify-between my-2 mx-4 rounded-lg p-1"
             >
               <div className="flex gap-4 items-center">
-                <Profile user={f.imageProfile} src={f.imageProfile}  isOpen={false} />
-                
+                <Profile
+                  user={f.imageProfile}
+                  src={f.imageProfile}
+                  isOpen={false}
+                />
+
                 <div className="flex flex-col min-w-44 max-w-44">
                   <Label>{f.name}</Label>
                   <Description className="line-clamp-2">
@@ -60,7 +62,7 @@ const RightBar = () => {
                     <CirclePlus className="size-6" />
                   </Button>
                   <Tooltip.Content showArrow>
-                  <Tooltip.Arrow />
+                    <Tooltip.Arrow />
                     <p className="m-1">Follow</p>
                   </Tooltip.Content>
                 </Tooltip>
@@ -93,8 +95,14 @@ const RightBar = () => {
               className="flex items-center justify-between my-2 mx-4 rounded-lg p-1"
             >
               <div className="flex gap-4 items-center">
-              <Profile className="rounded-lg" size="lg" alt={u.name} user={u} src={u.image} />
-                
+                <Profile
+                  className="rounded-lg"
+                  size="lg"
+                  alt={u.name}
+                  user={u}
+                  src={u.image}
+                />
+
                 <div className="flex flex-col">
                   <Label className="line-clamp-2 text-md">{u.title}</Label>
                   <div className="text-sm font-light dark:text-gray-200">
@@ -122,15 +130,15 @@ const RightBar = () => {
         </div>
 
         <div className="flex flex-wrap items-center gap-3 mb-10">
-        <Chip variant="primary" size="lg" className="cursor-pointer">          
-          <Chip.Label>Predicas</Chip.Label>
-        </Chip>
-        <Chip variant="primary" size="lg" className="cursor-pointer">          
-          <Chip.Label>Enseñanzas</Chip.Label>
-        </Chip>
-        <Chip variant="primary" size="lg" className="cursor-pointer">          
-          <Chip.Label>ABC de la vida cristiana</Chip.Label>
-        </Chip>
+          <Chip variant="primary" size="lg" className="cursor-pointer">
+            <Chip.Label>Predicas</Chip.Label>
+          </Chip>
+          <Chip variant="primary" size="lg" className="cursor-pointer">
+            <Chip.Label>Enseñanzas</Chip.Label>
+          </Chip>
+          <Chip variant="primary" size="lg" className="cursor-pointer">
+            <Chip.Label>ABC de la vida cristiana</Chip.Label>
+          </Chip>
         </div>
       </div>
     </aside>

@@ -21,6 +21,7 @@ import Search from "./Search";
 import Profile from "./Profile";
 import { useTheme } from "../store/useThemeStore";
 import CreatePostModal from "./Modals/CreatePostModal";
+import Image from '../components/Image';
 
 const languages = [
   { id: "es", label: "ES" },
@@ -67,12 +68,8 @@ const Navbar = () => {
           to="/"
           className={`flex items-center gap-2 ${theme === "dark" ? "text-white" : "text-black"}`}
         >
-          <img
-            src={theme === "light" ? Logo : LogoThemeDark}
-            alt="Logo"
-            width={50}
-            height={50}
-          />
+          <Image src={theme === "light" ? Logo : LogoThemeDark} alt="Logo" className="h-12.5 w-12.5" />
+          
           <p
             className={`font-extrabold text-3xl ${theme === "dark" ? "text-gray-300" : "text-gray-900"}`}
           >

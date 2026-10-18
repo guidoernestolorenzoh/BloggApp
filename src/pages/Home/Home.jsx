@@ -14,7 +14,11 @@ const Home = () => {
             <div className="flex flex-col mx-16">
               <div className="flex items-center my-5 gap-2">
                 <div className="flex items-center gap-4">
-                  <Profile user={p?.author} src={p.author.imageProfile} isOpen={false} />
+                  <Profile
+                    user={p?.author}
+                    src={p.author.imageProfile}
+                    isOpen={false}
+                  />
                   <span className="text-lg">{p?.author?.name}</span>
                 </div>
                 <span className="text-xl text-green-400">•</span>
@@ -28,9 +32,7 @@ const Home = () => {
           <div className="my-2">
             {/* title */}
             <div className="flex flex-col mx-16 ">
-              <h1 className="text-3xl font-bold mb-5">
-                {p?.title}
-              </h1>
+              <h1 className="text-3xl font-bold mb-5">{p?.title}</h1>
 
               <p className="text-xl text-justify mb-5">
                 {p?.excerpt}
@@ -41,7 +43,11 @@ const Home = () => {
                 </Link>
               </p>
 
-              <Image src={p?.image} className="h-105 rounded-4xl" alt="Winners" />
+              <Image
+                src={p?.image}
+                className="h-105 rounded-4xl"
+                alt="Winners"
+              />
 
               <div className="flex justify-between mt-2 items-center">
                 <div className="flex items-center gap-1 text-lg">
