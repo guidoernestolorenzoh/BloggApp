@@ -1,4 +1,5 @@
-import { Bell, Envelope, BookOpen, ShieldKeyhole, ArrowRightFromSquare, Gear, House, Magnifier, Person } from "@gravity-ui/icons";
+import { Bell, Envelope, BookOpen, ShieldKeyhole, ArrowRightFromSquare, Gear, CircleLetterA, CircleLetterB, CircleLetterC, Magnifier, Person, PlanetEarth, Books, QuoteOpen, Book } from "@gravity-ui/icons";
+import React from "react";
 
 export const formatearTextoEnParrafos = (texto, oracionesPorParrafo = 3) => {
   if (!texto) return [];
@@ -38,13 +39,22 @@ const dividirPorLongitud = (texto, palabrasPorParrafo) => {
   return parrafos;
 };
 
+const IconABC = () =>
+  React.createElement(
+    "span",
+    { className: "inline-flex items-center", "aria-label": "ABC" },
+    React.createElement(CircleLetterA, { className: "w-4 h-4" }),
+    React.createElement(CircleLetterB, { className: "w-4 h-4 -ml-1" }),
+    React.createElement(CircleLetterC, { className: "w-4 h-4 -ml-1" })
+  );
+
 const SIDEBARITEMS = [
-    { id: 1, icon: House, label: "Home", path: "/" },
-    { id: 2, icon: Magnifier, label: "Search", path: "" },
-    { id: 3, icon: Bell, label: "Notifications", path: "" },
-    { id: 4, icon: Envelope, label: "Messages", path: "" },
-    { id: 5, icon: Person, label: "Profile", path: "" },
-    { id: 6, icon: Gear, label: "Settings", path: "" }
+    { id: 1, icon: IconABC, label: "ABC Vida Cristiana", path: "/" },
+    { id: 2, icon: BookOpen, label: "Estudios Bíblicos", path: "" },
+    { id: 3, icon: PlanetEarth, label: "Estrategias para Evangelizar", path: "" },
+    { id: 4, icon: Book, label: "Prédicas y Enseñanzas", path: "" },    
+    { id: 5, icon: QuoteOpen, label: "Reflexiones Cristianas", path: "" },
+    { id: 6, icon: Books, label: "Materiales de Estudios", path: "" }
 ];
 
 const NAVBARITEMS = [

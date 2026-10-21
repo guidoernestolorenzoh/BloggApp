@@ -2,20 +2,21 @@ import { FileArrowUp } from "@gravity-ui/icons";
 import {
   Button,
   Input,
-  InputGroup,
   Label,
   Modal,
   Surface,
   TextField,
-  cn
+  cn,
 } from "@heroui/react";
 import { useRef, useState } from "react";
 import TagInput from "./Inputs/TagInput";
+import TextArea from "../Inputs/TextArea";
 
 const CreatePostModal = ({ className, nameButton, icon, headerTitle }) => {
   const fileInputRef = useRef(null);
   const [post, setPost] = useState("");
-  //const [loading, setLoading] = useState(false);
+  const [title, setTitle] = useState("");
+  const [loading, setLoading] = useState(false);
   const [isDragOver, setIsDragOver] = useState(false);
   const [images, setImages] = useState([]);
   const [postData, setPostData] = useState({
@@ -30,15 +31,13 @@ const CreatePostModal = ({ className, nameButton, icon, headerTitle }) => {
     },
     timeAgo: "",
     title: "",
-    excerpt:
-      "",
-    image:
-      "",
+    excerpt: "",
+    image: "",
     likes: "",
     comments: 0,
     shares: 0,
     tags: [],
-  },)
+  });
 
   const handleFileClick = () => {
     fileInputRef.current.click();
@@ -48,9 +47,9 @@ const CreatePostModal = ({ className, nameButton, icon, headerTitle }) => {
     handleUploadFile(e.target.files);
   };
 
-  const handleValueChange = (key, value)=> {
-    setPostData((prevData)=> ({...prevData, [key]:value}));
-  }
+  const handleValueChange = (key, value) => {
+    setPostData((prevData) => ({ ...prevData, [key]: value }));
+  };
 
   const handleUploadFile = (files) => {
     const filesUpload = Array.from(files);
@@ -104,19 +103,21 @@ const CreatePostModal = ({ className, nameButton, icon, headerTitle }) => {
             </Modal.Header>
             <Modal.Body>
               <Surface variant="default">
-                <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
-                  <TextField
-                    className="w-full"
-                    name="title"
+                <form
+                  className="flex flex-col gap-4"
+                  onSubmit={(e) => e.preventDefault()}
+                >
+                  <Label>
+                    Title <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
                     type="text"
-                    variant="secondary"
-                  >
-                    <Label>
-                      Title <span className="text-red-500">*</span>
-                    </Label>
-                    <Input className="inputs-rounded"
-                        placeholder="Enter a title for the post" />
-                  </TextField>
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                    placeholder="Enter a title for the post"
+                    className="inputs-rounded"
+                  />
                   <TextField>
                     <div
                       className={cn(
@@ -135,11 +136,13 @@ const CreatePostModal = ({ className, nameButton, icon, headerTitle }) => {
                         <p className="font-medium flex flex-col dark:text-white">
                           <div className="flex">
                             <span className="text-blue-900 font-bold dark:text-blue-400">
-                                Drag & Drop
+                              Drag & Drop
                             </span>
                             <div className="mx-1">your files here</div>
                           </div>
-                          <div className="mx-1 text-gray-500">Images uploaded: {images.length}</div>
+                          <div className="mx-1 text-gray-500">
+                            Images uploaded: {images.length}
+                          </div>
                         </p>
                         <button
                           onClick={handleFileClick}
@@ -162,21 +165,22 @@ const CreatePostModal = ({ className, nameButton, icon, headerTitle }) => {
                     <Label>
                       Post <span className="text-red-500">*</span>
                     </Label>
-                    <InputGroup>
-                      <InputGroup.TextArea
-                        className="text-area-rounded"
-                        placeholder="Enter the content for the post"
-                        rows={4}
-                        value={post}
-                        onChange={(e) => setPost(e.target.value)}
-                      />
-                    </InputGroup>
+                    <TextArea
+                      ariaLevel={4}
+                      type="text"
+                      value={post}
+                      onChange={(e) => setPost(e.target.value)}
+                      required
+                      placeholder="Enter the content for the post"
+                      className="text-area-rounded"
+                    />
                   </TextField>
                   <TextField>
-                    <TagInput tags={postData?.tags || []}
-                        setTags={(data)=> {
-                            handleValueChange("tags", data);
-                        }}
+                    <TagInput
+                      tags={postData?.tags || []}
+                      setTags={(data) => {
+                        handleValueChange("tags", data);
+                      }}
                     />
                   </TextField>
                 </form>
@@ -186,7 +190,9 @@ const CreatePostModal = ({ className, nameButton, icon, headerTitle }) => {
               <Button slot="close" variant="secondary" className="w-full">
                 Cancel
               </Button>
-              <Button slot="close" className="w-full">Post Article</Button>
+              <Button slot="close" isDisabled={!title || !post || loading} className="w-full">
+                Post Article
+              </Button>
             </Modal.Footer>
           </Modal.Dialog>
         </Modal.Container>

@@ -6,7 +6,7 @@ import cn from 'clsx';
 import { Link } from "react-router-dom";
 
 const SIDEBAR_WIDTH = 68; // px
-const SIDEBAR_EXPANDED_WIDTH = 220; // px, ajusta según necesidad
+const SIDEBAR_EXPANDED_WIDTH = 300; // px, ajusta según necesidad
 
 const ACTIVE_COLOR = "bg-blue-500 text-white dark:bg-blue-400"; 
 
@@ -35,7 +35,7 @@ const Sidebar = () => {
                             <button
                                 key={item.label}
                                 className={`
-                                    ${hovered ? 'items-center pl-7.5 cursor-pointer' : 'items-center justify-center'} rounded-xl py-3 px-2 my-1 text-sm
+                                    ${hovered ? 'items-center pl-3 cursor-pointer' : 'items-center justify-center'} rounded-xl py-3 px-2 my-1 text-md 
                                     transition-colors  w-full
                                     ${isActive ? ACTIVE_COLOR : "text-foreground hover:bg-gray-300/40 dark:hover:bg-gray-700/80"} flex  font-semibold
                                 `}
@@ -49,7 +49,7 @@ const Sidebar = () => {
                                 )}
                                 <span
                                     className={`
-                                        ml-3 whitespace-nowrap transition-opacity duration-200
+                                        ml-3 whitespace-nowrap transition-opacity duration-200 truncate
                                         ${hovered ? "opacity-100" : "opacity-0 pointer-events-none"}
                                     `}
                                     style={{ 

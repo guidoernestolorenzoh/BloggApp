@@ -2,11 +2,14 @@ import { Separator, Button } from "@heroui/react";
 import { LogoFacebook } from "@gravity-ui/icons";
 import { useState } from "react";
 import {LogoYandexMessenger} from '@gravity-ui/icons';
+import Input from "../../components/Inputs/Input";
+import TextArea from "../../components/Inputs/TextArea";
 
 const ContactUs = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const emailChurch = "info@gmail.com";
   const phoneChurch = "+1 188 888";
@@ -34,14 +37,7 @@ const ContactUs = () => {
                 <span className="text-red-500">*</span>
               </div>
               <div className="relative">
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  placeholder="Your name"
-                  className="inputs-rounded"
-                />
+                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} required placeholder="Your name" className="inputs-rounded" />                
               </div>
             </label>
 
@@ -52,14 +48,7 @@ const ContactUs = () => {
                 <span className="text-red-500">*</span>
               </div>
               <div className="relative">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  placeholder="Your email"
-                  className="inputs-rounded"
-                />
+                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Your email" className="inputs-rounded" />                 
               </div>
             </label>
 
@@ -69,21 +58,13 @@ const ContactUs = () => {
                 Your Message
                 <span className="text-red-500">*</span>
               </div>
-              <div className="relative">              
-                <textarea
-                  aria-level={4}
-                  type="text"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  required
-                  placeholder="Your message"
-                  className="text-area-rounded"
-                />
+              <div className="relative">  
+                <TextArea ariaLevel={4} type="text" value={message} onChange={(e) => setMessage(e.target.value)} required placeholder="Your message" className="text-area-rounded" />                            
               </div>
             </label>
 
             {/* button submit */}
-            <Button type="submit"> 
+            <Button type="submit" isDisabled={!name || !email || !message || loading}> 
               <LogoYandexMessenger/>
               <span>Submit</span>
             </Button>

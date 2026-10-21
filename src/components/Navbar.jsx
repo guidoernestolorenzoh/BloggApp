@@ -68,7 +68,7 @@ const Navbar = () => {
           to="/"
           className={`flex items-center gap-2 ${theme === "dark" ? "text-white" : "text-black"}`}
         >
-          <Image src={theme === "light" ? Logo : LogoThemeDark} alt="Logo" className="h-12.5 w-12.5" />
+          <Image src={theme === "light" ? Logo : LogoThemeDark} alt="Logo" className="h-10 w-12" />
           
           <p
             className={`font-extrabold text-3xl ${theme === "dark" ? "text-gray-300" : "text-gray-900"}`}
